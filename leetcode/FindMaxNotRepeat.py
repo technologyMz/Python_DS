@@ -50,7 +50,7 @@ class Solution2:
         left, res = 0, 0
         for i in range(0, len(s)):
             if s[i] in dic:
-                left = max(dic[s[i]], 1)
+                left = dic[s[i]]
             dic[s[i]] = i + 1
             res = max(res, i + 1 - left)
         return res
@@ -58,7 +58,7 @@ class Solution2:
 
 if __name__ == '__main__':
     str_test = "abcabcbb"
-    le = Solution1.lengthOfLongestSubstring(str_test)
+    le = Solution2.lengthOfLongestSubstring(str_test)
     print(le)
 
 
