@@ -58,9 +58,6 @@ class Solution2:
 
 if __name__ == '__main__':
     str_test = "abcabcbb"
-    # le = Solution1.lengthOfLongestSubstring(str_test)
-    # print(le)
-
     le = Solution1.lengthOfLongestSubstring(str_test)
     print(le)
 
