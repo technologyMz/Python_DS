@@ -24,6 +24,12 @@ class TreeNode:
 
 class Solution:
     def isSymmetric(self, root: TreeNode):
+        """
+        递归的方式实现
+        :param root:
+        :return:
+        """
+
         return self.isMirror(root, root)
 
     def isMirror(self, leftRoot: TreeNode, rightRoot: TreeNode) -> bool:
@@ -35,5 +41,26 @@ class Solution:
             return False
         return self.isMirror(leftRoot.left, rightRoot.right) and self.isMirror(leftRoot.right, rightRoot.left)
 
+    def isSymmetric2(self, root: TreeNode) -> bool:
+        """
+        迭代的方式实现
+        :param root:
+        :return:
+        """
+        if not root:
+            return True
 
+        node_queue = [root.left, root.right]
+        while node_queue:
+            left = node_queue.pop(0)
+            right = node_queue.pop(0)
 
+            if not left and not right:
+                return True
+            if not left or not right:
+                return False
+            if left.val != right.val:
+                return False
+
+            node_queue.extend([left.left, right.right, left.right, right.left])
+        return True
