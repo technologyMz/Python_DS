@@ -55,10 +55,10 @@ class Solution:
         depth = 0
         while stack:
             current_depth, node = stack.pop()
-            if root:
+            if node:
                 depth = max(depth, current_depth)
-                stack.append((current_depth + 1, root.left))
-                stack.append((current_depth + 1, root.right))
+                stack.append((current_depth + 1, node.left))
+                stack.append((current_depth + 1, node.right))
 
         return depth
 
