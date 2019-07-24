@@ -39,8 +39,8 @@ class Solution:
         """
         if not root:
             return True
-        return abs(self.height(root.right) - self.height(root.left)) < 2 and self.isBalanceTree1(root.left) \
-               and self.isBalanceTree1(root.right)
+        return abs(self.height(root.right) - self.height(root.left)) < 2 and \
+               self.isBalanceTree1(root.left) and self.isBalanceTree1(root.right)
 
     def height(self, node: TreeNode):
         if not node:
