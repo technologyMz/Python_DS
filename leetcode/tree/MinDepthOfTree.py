@@ -29,3 +29,40 @@ class TreeNode:
         self.right = None
 
 
+class Solution:
+    def min_depth1(self, root: TreeNode):
+        """
+        递归的方式
+        :param root:
+        :return:
+        """
+        if not root:
+            return 0
+        if not root.left and not root.right:
+            return 1
+        if not root.right:
+            return 1+self.min_depth1(root.left)
+        if not root.left:
+            return 1+self.min_depth1(root.right)
+        return 1+min(self.min_depth1(root.left), self.min_depth1(root.right))
+
+    @staticmethod
+    def min_depth2(root: TreeNode):
+        """
+        迭代的方式（层次遍历）
+        :param root:
+        :return:
+        """
+        if not root:
+            return 0
+        ans, count = [root], 1
+        while ans:
+            n = len(ans)
+            for i in range(n):
+                r = ans.pop(0)
+                if r:
+                    if not r.left and not r.right:
+                        return count
+                    ans.append(r.left if r.left else [])
+                    ans.append(r.right if r.right else [])
+            count += 1
